@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   mount Shoppe::Engine => "/shoppe"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -14,7 +16,11 @@ Rails.application.routes.draw do
   match "checkout/pay", to: "orders#payment", as: "checkout_payment", via: [:get, :post]
   match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:get, :post]
 
-  root to: "products#index"
+  # root to: "products#index"
+
+  get "products", to: "products#index"
+
+  root to: "home#index"
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

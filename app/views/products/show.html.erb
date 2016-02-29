@@ -1,17 +1,133 @@
-<h2><%= @product.name %></h2>
+<div class="main-body-wrapper">
+   <!-- Breadcrumbs section starts -->       
+   <div class="container block-45">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumbs-block breadcrumbs-product">
+               <!-- breadcrumbs starts -->               
+               <ol class="breadcrumb">
+                  <li><a href="#">Home </a></li>
+                  <li><a href="#">Product </a></li>
+                  <li class="active">Product List </li>
+               </ol>
+               <!-- breadcrumbs ends -->             
+            </div>
+         </div>
+      </div>
+      <!-- Breadcrumbs section ends -->         <!-- product details starts -->
+      <div class="row pd-detail-mb">
+        <!-- display details cloud zoom flexslider -->
+        <%= render 'show_page_main_slider' %>
+        <!-- display detail description and options -->           
+        <div class="col-md-7">
+           <!-- product display detail description -->             
+           <div class="product-display-detail-desc block-90">
+              <h1 class="item-head">Inceptos orci hac libero </h1>
+              <span class="item-price"><span class="prev-price">$ 180 </span>$ 120 </span>               
+              <ul class="item-brief-desc">
+                 <li><span>Brand: </span>Versace </li>
+                 <li><span>Availability: </span>In Stock </li>
+                 <li><span>Product Code: </span>123 </li>
+              </ul>
+              <%= form_tag product_path(@product.permalink), :method => :post, :remote=>true do %>
+                <div class="row">
+                   <div class="col-sm-6 ">
+                      <div class="item-short item-color">
+                         <h1>Color </h1>
+                         <div class="select-wrap">
+                          <%= select_tag 'colors', options_for_select(@colors ? @colors : "" , :selected => @product.get_color),{:prompt=>"Please select", :class=>"select select-dd"}%>
+                         </div>
+                      </div>
+                      <div class="item-short item-color">
+                         <h1>Size </h1>
+                         <div class="select-wrap">
+                            <%= select_tag 'sizes', options_for_select(@sizes ? @sizes : ""),{:prompt=>"Please select", :class=>"select select-dd"}%>
+                         </div>
+                      </div>
+                      <div class="item-short item-color">
+                         <h1>Qty </h1>
+                         <div class="select-wrap">
+                            <%= select_tag 'quantity', options_for_select([1, 2, 3 ]),{:prompt=>"Please select", :class=>"select select-dd", :required=>true}%>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-sm-6 item-short item-size">
+                      <button id="add-to-cart" class="add-to-cart" style="border:none;"> Add to Cart </button>
+                      <!-- <a id="add-to-cart"  class="add-to-cart">Add to Cart </a> -->
+                      <%#= link_to "Add to Cart", product_path(@product.permalink), :method => :post, :class => "add-to-cart" , :remote=>true %>                   
+                      <div class="btn-group">                     <a href="#" class="btn btn-link">+ Add to Wishlist </a>                     <a href="#" class="btn btn-link">+ Compare </a>                   </div>
+                   </div>
+                </div>
+              <% end %>
+              <div class="item-quick-overview">
+                 <h1>Quick Overview: </h1>
+                 <p>Ut suscipit senectus ligula __ non nisi nam lobortis ______ curabitur diam, fames morbi ________ adipiscing massa ornare habitant ____ eu placerat himenaeos, sem ______ tortor pretium tortor varius _______ nam metus euismod. </p>
+              </div>
+              <div class="social-share">                 <span class='st_sharethis'></span>                 <span class='st_facebook'></span>                 <span class='st_twitter'></span>                 <span class='st_linkedin'></span>                 <span class='st_pinterest'></span>                 <span class='st_email'></span>               </div>
+           </div>
+        </div>
+      </div>
 
-<% if @product.default_image %>
-  <%= image_tag @product.default_image.path, :width => '200px', :style => "float:right" %>
-<% end %>
+      <div class="row block-45">
+         <!-- product details tab feature -->           
+         <div class="col-md-12 review-tab">
+            <ul class="nav nav-tabs" id="myTab">
+               <li class="active"><a href="#description" data-toggle="tab">Description </a></li>
+               <li><a href="#reviews" data-toggle="tab">Reviews </a></li>
+               <li><a href="#ptags" data-toggle="tab">Product tags </a></li>
+            </ul>
+            <div class="tab-content">
+               <div class="tab-pane active" id="description">
+                  <h1>Product Description </h1>
+                  <p>Ultricies et consectetur rhoncus _____ mattis, ligula interdum nibh _____ ipsum, venenatis ultrices sem ____ senectus phasellus lectus facilisis _______ curabitur interdum pretium et ____________ nullam auctor vestibulum aenean _____ placerat erat volutpat lectus __ est lacinia sociosqu, pretium _________ aenean eros tristique augue _ vivamus ac, sapien blandit ______ et neque curabitur varius ______ dui dictum cras orci ______. </p>
+                  <ul>
+                     <li>Sed ornare cras donec ______ </li>
+                     <li>Integer curabitur orci </li>
+                     <li>At nullam aliquam libero ___ himenaeos </li>
+                  </ul>
+               </div>
+               <div class="tab-pane" id="reviews">                I love these _____ because they are so ______ and you can wear ____ to anything. They're very _____ but in my opinion ____'_ what a pair of _____ should be. If I ____ fancy trousers then I ___ fancy TROUSERS, not jeans.                ____'_ has always been my _________ brand of jeans. I __ agree that the US ____ are of inferior quality, ___ only slightly. I guess ___ do get what you ___ for. Nonetheless, good product, ____ fit, five stars (going __ price-quality), although next time _'__ opt for the UK ____ again!                  <br /><br />                Husband very pleased ____ these... Fit is great, 34/34 and they look good ___ he says they are _____...____ been through a few ______ and holding up as ___ would expect....                  <br /><br />                Just took delivery __ a black pair, delivery ___ much slower than usual ______ standard but within the _________ window. Jeans are labelled __ made in Mexico so _ guess they are genuine __ stock. The fit is ____, the colour is a ____ deep black and even ___ over the jeans, the ______ is excellent and the _____ is heavy without being _____. It's all I can __ to stop myself ordering ____ pairs straight away.The range __ sizes available is fantastic, __ alterations in length needed .                </div>
+               <div class="tab-pane" id="ptags">                Original Levi 501  <br />                Button fly <br />                Regular fit <br />                waist 28"-32 =16"hem <br />                waist 33" = 17" hem <br />                waist 34"-40"=18" hem <br />                Levi's have started __ introduce the red tab ____ just the (R) (registered _____ mark) on the red ___ <br /><br />                Size Details: <br />                All sizes from 28-40 waist <br />                Leg length 30", 32", 34", 36"               </div>
+            </div>
+         </div>
+      </div>
+      <!-- home page featured product section starts -->         
+      <%= render 'related_products' %>
+   </div>
+</div>
 
-<p><%= @product.short_description %></p>
-<p>
-  <b><%= number_to_currency @product.price %></b>
-  <%= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
-</p>
+<script type="text/javascript">
+  $("#colors").change(function(){
+    var color = $(this).val();
+    $.ajax({
+          url: '<%=product_path(@product.permalink)%>',
+          data: {"color": color},
+          method: 'get',
+          format: 'js',
+          success: function(data) {
+            
+          }
+        });
+  });
 
-<hr>
-<%= simple_format @product.description %>
-<hr>
 
-<p><%= link_to "Back to list", root_path %></p>
+
+  // $("#add-to-cart").click(function(){
+  //   alert("bbbbbb")
+  //   var color = $("#colors").val();
+  //   var size = $("#sizes").val();
+  //   var quantity = $("#quantity").val();
+  //   $.ajax({
+  //         url: '<%=product_path(@product.permalink)%>',
+  //         data: {"color": color, "size": size, "quantity": quantity},
+  //         type: 'post',
+  //         format: 'js',
+
+  //         success: function(data) {
+            
+  //         }
+  //       });
+  // });
+</script>
+
+
