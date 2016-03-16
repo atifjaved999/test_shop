@@ -28,72 +28,7 @@
         <div class="row">
           <!-- shopping cart container  -->
           <div class="col-md-9">
-            <div class="cart-area">
-              <!-- heading row -->
-              <div class="headers row">
-                <div class="product-name col-xs-5">Product Name </div>
-                <div class="price col-xs-2">Unit Price </div>
-                <div class="product-quantity col-xs-2">QTy </div>
-                <div class="subtotal-price col-xs-2">SubTotal </div>
-                <div class="remove col-xs-1"></div>
-              </div>
-              <% order.order_items.each do |item| %>
-                <!-- item row -->
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="cart-row">
-                        <div class="product-name col-xs-5">
-                         
-                          <figure>
-                            <img src="images/products/item-10.jpg" alt="" />
-                            <figcaption class="product-title">
-                              <h2>Inceptos orci hac libero </h2>
-                              <ul>
-                                <li>Color:  <span>Pink </span></li>
-                                <li>Size:  <span>41 </span></li>
-                              </ul>
-                            </figcaption>
-                          </figure>
-                         
-                         
-                        </div>
-                        <div class="price col-xs-2">
-                          <span class="currency">$ </span><span class="value">350.00 </span>
-                        </div>
-                        <div class="product-quantity col-xs-2">
-                          <div class="product-display-no">
-                            <div class="select-wrap-ff">
-                              <select class="select select-ff">
-                                <option />9 
-                                <option />8 
-                                <option />7 
-                                <option />6 
-                                <option />5 
-                                <option />4 
-                                <option />3 
-                                <option />2 
-                                <option />1 
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="subtotal-price col-xs-2">
-                          <span class="currency">$ </span><span class="value">350.00 </span>                
-                        </div>
-                        <div class="remove col-xs-1">
-                          <a href="#"><i class="fa fa-times"></i></a>             
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-              <div class="cart-btn-group">
-                <a href="#">Continue shopping </a>
-                <a href="#">Update shopping cart </a>
-                <a href="#">Clear shopping cart price </a>
-              </div>
-            </div>
-           
+            <%= render "shopping_cart", order: order %>
           </div>
           <!-- shopping cart sidebar container  -->
           <div class="col-md-3">
@@ -424,7 +359,7 @@
                 </form>
               </div> -->
 
-              <div class="shopping-cart-sidebar-container">
+<!--               <div class="shopping-cart-sidebar-container">
                 <h2>discount codes </h2>
                 <p>Enter your coupon code __ you have one. </p>
                 <form action="#" method="post" class="sc-sidebar-form">
@@ -434,25 +369,26 @@
                   </div>
 
                 </form>
-              </div>
+              </div> -->
 
               <div class="shopping-cart-sidebar-container">
                 <!-- total price section -->
                 <div class="total-price">
                   <div class="st">
-                    <span class="pull-left">Sub Total: </span><span class="pull-right">$1050.00 </span>
+                    <span class="pull-left">Sub Total: </span><span class="pull-right">$000.00 </span>
                   </div>
                   <div class="st">
-                    <span class="pull-left">Tax: </span><span class="pull-right">0% </span>
+                    <span class="pull-left">Tax: </span><span class="pull-right">000% </span>
                   </div>
                   <div class="st">
-                    <span class="pull-left">Shipping: </span><span class="pull-right">free </span>
+                    <span class="pull-left">Shipping: </span><span class="pull-right">Free </span>
                   </div>
                   <div class="gt">
-                    <span class="pull-left">Grand Total: </span><span class="pull-right">$1050.00 </span>
+                    <span class="pull-left">Grand Total: </span><span class="pull-right"><%= number_to_currency order.total %></span>
                   </div>
-                  <a href="#" class="btn btn-primary btn-theme-color">Proceed to checkout </a>
-                  <a href="#" class="btn btn-link">Continue shopping </a>
+                  <!-- <a href="#" class="btn btn-primary btn-theme-color">Proceed to checkout </ a> -->
+                  <%= link_to "Proceed to checkout ", checkout_path, :class=>"btn btn-primary btn-theme-color" %>
+                  <%= link_to 'Continue shopping', products_path, class: :"btn btn-link"%>
                 </div>
               </div>
 
@@ -501,6 +437,4 @@
   </div>
 </div> -->
 
-<%= render 'items', :order => current_order %>
-
-<p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
+<%#= render 'items', :order => current_order %>

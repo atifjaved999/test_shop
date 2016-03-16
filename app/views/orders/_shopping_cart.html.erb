@@ -1,0 +1,52 @@
+<div class="cart-area">
+  <!-- heading row -->
+  <div class="headers row">
+    <div class="product-name col-xs-5">Product Name </div>
+    <div class="price col-xs-2">Unit Price </div>
+    <div class="product-quantity col-xs-2">QTy </div>
+    <div class="subtotal-price col-xs-2">SubTotal </div>
+    <div class="remove col-xs-1"></div>
+  </div>
+  <% order.order_items.each do |item| %>
+    <!-- item row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="cart-row">
+            <div class="product-name col-xs-5">
+             
+              <figure>
+                <image src='<%= item.ordered_item.default_image.path%>' 
+                width='117' height='85' alt='Not Found' />
+                <figcaption class="product-title">
+                  <h2><%= item.ordered_item.full_name %></h2>
+                  <ul>
+                    <li>Color:  <span>Pink </span></li>
+                    <li>Size:  <span>41 </span></li>
+                  </ul>
+                </figcaption>
+              </figure>
+             
+             
+            </div>
+            <div class="price col-xs-2">
+              <span class="value"><%= number_to_currency item.unit_price %></span>
+            </div>
+            <div class="product-quantity col-xs-2">
+                  <input type="number" value="<%= item.quantity %>" style="width: 62px;" />
+            </div>
+            <div class="subtotal-price col-xs-2">
+              <span class="value"><%= number_to_currency item.sub_total %></span>                
+            </div>
+            <div class="remove col-xs-1">
+              <a href="#"><i class="fa fa-times"></i></a>             
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="cart-btn-group">
+  <%= link_to 'Continue shopping', products_path%>
+    <a href="#">Update shopping cart </a>
+    <%= link_to 'Clear shopping cart', basket_path, :method => :delete %>
+  </div>
+</div>

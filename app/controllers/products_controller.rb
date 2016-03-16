@@ -34,11 +34,16 @@ class ProductsController < ApplicationController
   def buy
     @product = Shoppe::Product.active.find_by_permalink!(params[:permalink])
     
-    if params[:colors] and params[:sizes]
+    if params[:colors].present? and params[:sizes].present?
       @product = Shoppe::Product.find_exact_product(params[:colors], params[:sizes])
+      # byebug # iff
+    elsif params[:colors].present?
+      @product = @product.color_variants(params[:colors]).first
+      # byebug # else
     end
 
     quantity = params[:quantity] ? params[:quantity].to_i : 1
+    # byebug
     current_order.order_items.add_item(@product, quantity)
     # redirect_to product_path(@product.permalink), :notice => "Product has been added successfuly!"
   end
