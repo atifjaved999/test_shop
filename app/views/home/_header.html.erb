@@ -40,21 +40,47 @@
        <div class="col-md-12">
          <!-- header top shopping cart button -->
            <div class="dropdown ht-cart ht-fl">
-             <p>Free Home Delivery !</p>
-             <a data-toggle="dropdown" href="#" class="button-cart">Cart </a>
-             <div class="dropdown-menu content" role="menu">
+             <p>
+              <%= link_to "Shopping Cart:", basket_path %>
+              <span><%= number_to_currency current_order.total %></span>
+             </p>
 
-               <div class="col-md-12">
-                 <h4>Steps to place your Order.</h4><hr>
-                 <span>  01) Select any Product(s).</span><hr>
-                 <span>  02) Note the Product(s) Code.</span><hr>
-                 <span>  03) Call at 0321-4545345.</span><hr>
-                 <span>  04) Tell the Product(s) Code that you want to Purchase.</span><hr>
-                 <span>  05) Clongarulation! Your Order Has been placed.</span><hr>
-                 <span> Now, We will send the product(s) to the given address as early as possible.</span>
+             <a data-toggle="dropdown" href="#" class="button-cart">Cart </a>
+               <div class="dropdown-menu content" role="menu">
+
+                 <div class="mini-cart-info">
+                   <table>
+                     <tbody>
+                       <tr>
+                         <td class="cart-head">Recently added items </td>
+                       </tr>
+                       <% current_order.order_items.each do |item| %>
+                         <tr>
+                           <td class="image">
+                             <a href="#">
+                              <image src='<%= item.ordered_item.default_image.path%>' width='117' height='85' alt='Not Found' />
+                             </a>
+                           </td>
+                           <td class="name">
+                             <a href="#">
+                               <span class="mc-heading"><%= item.ordered_item.full_name %> </span>
+                             </a>                              
+                             <span class="mc-price"><%= item.quantity %> x <%= number_to_currency item.unit_price %> </span>
+                           </td>
+                           <td class="remove">
+                             <a href="#"><span class="fa fa-times"></span></a>
+                           </td>
+                         </tr>
+                       <% end %>
+                     </tbody>
+                   </table>
+                 </div>
+
+                 <div class="mini-cart-checkout">
+                   <a href="#" class="btn btn-checkout">Proceed to checkout </a>
+                 </div>
                </div>
-             </div>
-           </div>              
+           </div>
        </div>
 
        <div class="col-md-12">
@@ -62,7 +88,7 @@
          <nav class="clearfix">
            <ul id="nav" class="main-nav">
              <li class="shop-submenu-area selected">
-               <a href="index.php">Home Page </a>
+             <%= link_to "Home Page", root_path, 'data-no-turbolink' => true %>
              </li>
              <li class="shop-submenu-area">
                <a href="#">Shop </a>
