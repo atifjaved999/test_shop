@@ -1,0 +1,440 @@
+<!-- <h2>Your basket</h2> -->
+<%order = current_order%>
+
+<!-- main body section starts -->
+<div class="main-body-wrapper">
+  <div class="container block-45">
+    <div class="row">
+      <div class="col-md-12">
+          <!-- Breadcrumbs section starts -->
+          <div class="breadcrumbs-block breadcrumbs-product">
+             <!-- breadcrumbs starts -->
+            <ol class="breadcrumb">
+              <li><a href="#">Home </a></li>
+              <li class="active">Shopping Cart </li>
+            </ol>
+            <!-- breadcrumbs ends -->
+        </div>
+        <!-- Breadcrumbs section ends -->
+      </div>
+      <div class="col-md-12">
+        <!-- page title -->
+        <div class="page-title">
+          <h1 class="page-title-head">Shopping Cart </h1>
+        </div>
+      </div>
+      <!-- shopping cart section starts -->
+      <div class="col-md-12 shopping-cart-block">
+        <div class="row">
+          <!-- shopping cart container  -->
+          <div class="col-md-9">
+            <%= render "shopping_cart", order: order %>
+          </div>
+          <!-- shopping cart sidebar container  -->
+          <div class="col-md-3">
+            <div class="shopping-cart-sidebar">
+<!-- 
+              <div class="shopping-cart-sidebar-container">
+                <h2>ESTIMATE SHIPPING AND TAX </h2>
+                <p>Enter your destination to ___ a shipping estimate. </p>
+                <form action="#" method="post" class="sc-sidebar-form">
+                  <div class="sidebar-options">
+                    <span class="sel-text">Country: </span>
+                    <div class="select-wrap">
+                      <select name="Country" class="select select-pn"> 
+                        <option value="" selected="selected" />-- Please select --  
+                        <option value="United States" />United States  
+                        <option value="United Kingdom" />United Kingdom  
+                        <option value="Afghanistan" />Afghanistan  
+                        <option value="Albania" />Albania  
+                        <option value="Algeria" />Algeria  
+                        <option value="American Samoa" />American Samoa  
+                        <option value="Andorra" />Andorra  
+                        <option value="Angola" />Angola  
+                        <option value="Anguilla" />Anguilla  
+                        <option value="Antarctica" />Antarctica  
+                        <option value="Antigua and Barbuda" />Antigua and Barbuda  
+                        <option value="Argentina" />Argentina  
+                        <option value="Armenia" />Armenia  
+                        <option value="Aruba" />Aruba  
+                        <option value="Australia" />Australia  
+                        <option value="Austria" />Austria  
+                        <option value="Azerbaijan" />Azerbaijan  
+                        <option value="Bahamas" />Bahamas  
+                        <option value="Bahrain" />Bahrain  
+                        <option value="Bangladesh" />Bangladesh  
+                        <option value="Barbados" />Barbados  
+                        <option value="Belarus" />Belarus  
+                        <option value="Belgium" />Belgium  
+                        <option value="Belize" />Belize  
+                        <option value="Benin" />Benin  
+                        <option value="Bermuda" />Bermuda  
+                        <option value="Bhutan" />Bhutan  
+                        <option value="Bolivia" />Bolivia  
+                        <option value="Bosnia and Herzegovina" />Bosnia and Herzegovina  
+                        <option value="Botswana" />Botswana  
+                        <option value="Bouvet Island" />Bouvet Island  
+                        <option value="Brazil" />Brazil  
+                        <option value="British Indian Ocean Territory" />British Indian Ocean Territory  
+                        <option value="Brunei Darussalam" />Brunei Darussalam  
+                        <option value="Bulgaria" />Bulgaria  
+                        <option value="Burkina Faso" />Burkina Faso  
+                        <option value="Burundi" />Burundi  
+                        <option value="Cambodia" />Cambodia  
+                        <option value="Cameroon" />Cameroon  
+                        <option value="Canada" />Canada  
+                        <option value="Cape Verde" />Cape Verde  
+                        <option value="Cayman Islands" />Cayman Islands  
+                        <option value="Central African Republic" />Central African Republic  
+                        <option value="Chad" />Chad  
+                        <option value="Chile" />Chile  
+                        <option value="China" />China  
+                        <option value="Christmas Island" />Christmas Island  
+                        <option value="Cocos (Keeling) Islands" />Cocos (Keeling) Islands  
+                        <option value="Colombia" />Colombia  
+                        <option value="Comoros" />Comoros  
+                        <option value="Congo" />Congo  
+                        <option value="Congo, The Democratic Republic of The" />Congo, The Democratic Republic __ The  
+                        <option value="Cook Islands" />Cook Islands  
+                        <option value="Costa Rica" />Costa Rica  
+                        <option value="Cote D'ivoire" />Cote D'ivoire  
+                        <option value="Croatia" />Croatia  
+                        <option value="Cuba" />Cuba  
+                        <option value="Cyprus" />Cyprus  
+                        <option value="Czech Republic" />Czech Republic  
+                        <option value="Denmark" />Denmark  
+                        <option value="Djibouti" />Djibouti  
+                        <option value="Dominica" />Dominica  
+                        <option value="Dominican Republic" />Dominican Republic  
+                        <option value="Ecuador" />Ecuador  
+                        <option value="Egypt" />Egypt  
+                        <option value="El Salvador" />El Salvador  
+                        <option value="Equatorial Guinea" />Equatorial Guinea  
+                        <option value="Eritrea" />Eritrea  
+                        <option value="Estonia" />Estonia  
+                        <option value="Ethiopia" />Ethiopia  
+                        <option value="Falkland Islands (Malvinas)" />Falkland Islands (Malvinas)  
+                        <option value="Faroe Islands" />Faroe Islands  
+                        <option value="Fiji" />Fiji  
+                        <option value="Finland" />Finland  
+                        <option value="France" />France  
+                        <option value="French Guiana" />French Guiana  
+                        <option value="French Polynesia" />French Polynesia  
+                        <option value="French Southern Territories" />French Southern Territories  
+                        <option value="Gabon" />Gabon  
+                        <option value="Gambia" />Gambia  
+                        <option value="Georgia" />Georgia  
+                        <option value="Germany" />Germany  
+                        <option value="Ghana" />Ghana  
+                        <option value="Gibraltar" />Gibraltar  
+                        <option value="Greece" />Greece  
+                        <option value="Greenland" />Greenland  
+                        <option value="Grenada" />Grenada  
+                        <option value="Guadeloupe" />Guadeloupe  
+                        <option value="Guam" />Guam  
+                        <option value="Guatemala" />Guatemala  
+                        <option value="Guinea" />Guinea  
+                        <option value="Guinea-bissau" />Guinea-bissau  
+                        <option value="Guyana" />Guyana  
+                        <option value="Haiti" />Haiti  
+                        <option value="Heard Island and Mcdonald Islands" />Heard Island and Mcdonald _______  
+                        <option value="Holy See (Vatican City State)" />Holy See (Vatican City _____)  
+                        <option value="Honduras" />Honduras  
+                        <option value="Hong Kong" />Hong Kong  
+                        <option value="Hungary" />Hungary  
+                        <option value="Iceland" />Iceland  
+                        <option value="India" />India  
+                        <option value="Indonesia" />Indonesia  
+                        <option value="Iran, Islamic Republic of" />Iran, Islamic Republic of  
+                        <option value="Iraq" />Iraq  
+                        <option value="Ireland" />Ireland  
+                        <option value="Israel" />Israel  
+                        <option value="Italy" />Italy  
+                        <option value="Jamaica" />Jamaica  
+                        <option value="Japan" />Japan  
+                        <option value="Jordan" />Jordan  
+                        <option value="Kazakhstan" />Kazakhstan  
+                        <option value="Kenya" />Kenya  
+                        <option value="Kiribati" />Kiribati  
+                        <option value="Korea, Democratic People's Republic of" />Korea, Democratic People's Republic __  
+                        <option value="Korea, Republic of" />Korea, Republic of  
+                        <option value="Kuwait" />Kuwait  
+                        <option value="Kyrgyzstan" />Kyrgyzstan  
+                        <option value="Lao People's Democratic Republic" />Lao People's Democratic Republic  
+                        <option value="Latvia" />Latvia  
+                        <option value="Lebanon" />Lebanon  
+                        <option value="Lesotho" />Lesotho  
+                        <option value="Liberia" />Liberia  
+                        <option value="Libyan Arab Jamahiriya" />Libyan Arab Jamahiriya  
+                        <option value="Liechtenstein" />Liechtenstein  
+                        <option value="Lithuania" />Lithuania  
+                        <option value="Luxembourg" />Luxembourg  
+                        <option value="Macao" />Macao  
+                        <option value="Macedonia, The Former Yugoslav Republic of" />Macedonia, The Former Yugoslav ________ of  
+                        <option value="Madagascar" />Madagascar  
+                        <option value="Malawi" />Malawi  
+                        <option value="Malaysia" />Malaysia  
+                        <option value="Maldives" />Maldives  
+                        <option value="Mali" />Mali  
+                        <option value="Malta" />Malta  
+                        <option value="Marshall Islands" />Marshall Islands  
+                        <option value="Martinique" />Martinique  
+                        <option value="Mauritania" />Mauritania  
+                        <option value="Mauritius" />Mauritius  
+                        <option value="Mayotte" />Mayotte  
+                        <option value="Mexico" />Mexico  
+                        <option value="Micronesia, Federated States of" />Micronesia, Federated States of  
+                        <option value="Moldova, Republic of" />Moldova, Republic of  
+                        <option value="Monaco" />Monaco  
+                        <option value="Mongolia" />Mongolia  
+                        <option value="Montserrat" />Montserrat  
+                        <option value="Morocco" />Morocco  
+                        <option value="Mozambique" />Mozambique  
+                        <option value="Myanmar" />Myanmar  
+                        <option value="Namibia" />Namibia  
+                        <option value="Nauru" />Nauru  
+                        <option value="Nepal" />Nepal  
+                        <option value="Netherlands" />Netherlands  
+                        <option value="Netherlands Antilles" />Netherlands Antilles  
+                        <option value="New Caledonia" />New Caledonia  
+                        <option value="New Zealand" />New Zealand  
+                        <option value="Nicaragua" />Nicaragua  
+                        <option value="Niger" />Niger  
+                        <option value="Nigeria" />Nigeria  
+                        <option value="Niue" />Niue  
+                        <option value="Norfolk Island" />Norfolk Island  
+                        <option value="Northern Mariana Islands" />Northern Mariana Islands  
+                        <option value="Norway" />Norway  
+                        <option value="Oman" />Oman  
+                        <option value="Pakistan" />Pakistan  
+                        <option value="Palau" />Palau  
+                        <option value="Palestinian Territory, Occupied" />Palestinian Territory, Occupied  
+                        <option value="Panama" />Panama  
+                        <option value="Papua New Guinea" />Papua New Guinea  
+                        <option value="Paraguay" />Paraguay  
+                        <option value="Peru" />Peru  
+                        <option value="Philippines" />Philippines  
+                        <option value="Pitcairn" />Pitcairn  
+                        <option value="Poland" />Poland  
+                        <option value="Portugal" />Portugal  
+                        <option value="Puerto Rico" />Puerto Rico  
+                        <option value="Qatar" />Qatar  
+                        <option value="Reunion" />Reunion  
+                        <option value="Romania" />Romania  
+                        <option value="Russian Federation" />Russian Federation  
+                        <option value="Rwanda" />Rwanda  
+                        <option value="Saint Helena" />Saint Helena  
+                        <option value="Saint Kitts and Nevis" />Saint Kitts and Nevis  
+                        <option value="Saint Lucia" />Saint Lucia  
+                        <option value="Saint Pierre and Miquelon" />Saint Pierre and Miquelon  
+                        <option value="Saint Vincent and The Grenadines" />Saint Vincent and The __________  
+                        <option value="Samoa" />Samoa  
+                        <option value="San Marino" />San Marino  
+                        <option value="Sao Tome and Principe" />Sao Tome and Principe  
+                        <option value="Saudi Arabia" />Saudi Arabia  
+                        <option value="Senegal" />Senegal  
+                        <option value="Serbia and Montenegro" />Serbia and Montenegro  
+                        <option value="Seychelles" />Seychelles  
+                        <option value="Sierra Leone" />Sierra Leone  
+                        <option value="Singapore" />Singapore  
+                        <option value="Slovakia" />Slovakia  
+                        <option value="Slovenia" />Slovenia  
+                        <option value="Solomon Islands" />Solomon Islands  
+                        <option value="Somalia" />Somalia  
+                        <option value="South Africa" />South Africa  
+                        <option value="South Georgia and The South Sandwich Islands" />South Georgia and The _____ Sandwich Islands  
+                        <option value="Spain" />Spain  
+                        <option value="Sri Lanka" />Sri Lanka  
+                        <option value="Sudan" />Sudan  
+                        <option value="Suriname" />Suriname  
+                        <option value="Svalbard and Jan Mayen" />Svalbard and Jan Mayen  
+                        <option value="Swaziland" />Swaziland  
+                        <option value="Sweden" />Sweden  
+                        <option value="Switzerland" />Switzerland  
+                        <option value="Syrian Arab Republic" />Syrian Arab Republic  
+                        <option value="Taiwan, Province of China" />Taiwan, Province of China  
+                        <option value="Tajikistan" />Tajikistan  
+                        <option value="Tanzania, United Republic of" />Tanzania, United Republic of  
+                        <option value="Thailand" />Thailand  
+                        <option value="Timor-leste" />Timor-leste  
+                        <option value="Togo" />Togo  
+                        <option value="Tokelau" />Tokelau  
+                        <option value="Tonga" />Tonga  
+                        <option value="Trinidad and Tobago" />Trinidad and Tobago  
+                        <option value="Tunisia" />Tunisia  
+                        <option value="Turkey" />Turkey  
+                        <option value="Turkmenistan" />Turkmenistan  
+                        <option value="Turks and Caicos Islands" />Turks and Caicos Islands  
+                        <option value="Tuvalu" />Tuvalu  
+                        <option value="Uganda" />Uganda  
+                        <option value="Ukraine" />Ukraine  
+                        <option value="United Arab Emirates" />United Arab Emirates  
+                        <option value="United Kingdom" />United Kingdom  
+                        <option value="United States" />United States  
+                        <option value="United States Minor Outlying Islands" />United States Minor Outlying _______  
+                        <option value="Uruguay" />Uruguay  
+                        <option value="Uzbekistan" />Uzbekistan  
+                        <option value="Vanuatu" />Vanuatu  
+                        <option value="Venezuela" />Venezuela  
+                        <option value="Viet Nam" />Viet Nam  
+                        <option value="Virgin Islands, British" />Virgin Islands, British  
+                        <option value="Virgin Islands, U.S." />Virgin Islands, U.S.  
+                        <option value="Wallis and Futuna" />Wallis and Futuna  
+                        <option value="Western Sahara" />Western Sahara  
+                        <option value="Yemen" />Yemen  
+                        <option value="Zambia" />Zambia  
+                        <option value="Zimbabwe" />Zimbabwe 
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="sidebar-options">
+                    <span class="sel-text">State/Province: </span>
+                    <div class="select-wrap">
+                      <select name="State" class="select select-pn"> 
+                        <option value="" selected="selected" />-- Please select --  
+                        <option value="AL" />Alabama  
+                        <option value="AK" />Alaska  
+                        <option value="AZ" />Arizona  
+                        <option value="AR" />Arkansas  
+                        <option value="CA" />California  
+                        <option value="CO" />Colorado  
+                        <option value="CT" />Connecticut  
+                        <option value="DE" />Delaware  
+                        <option value="DC" />District Of Columbia  
+                        <option value="FL" />Florida  
+                        <option value="GA" />Georgia  
+                        <option value="HI" />Hawaii  
+                        <option value="ID" />Idaho  
+                        <option value="IL" />Illinois  
+                        <option value="IN" />Indiana  
+                        <option value="IA" />Iowa  
+                        <option value="KS" />Kansas  
+                        <option value="KY" />Kentucky  
+                        <option value="LA" />Louisiana  
+                        <option value="ME" />Maine  
+                        <option value="MD" />Maryland  
+                        <option value="MA" />Massachusetts  
+                        <option value="MI" />Michigan  
+                        <option value="MN" />Minnesota  
+                        <option value="MS" />Mississippi  
+                        <option value="MO" />Missouri  
+                        <option value="MT" />Montana  
+                        <option value="NE" />Nebraska  
+                        <option value="NV" />Nevada  
+                        <option value="NH" />New Hampshire  
+                        <option value="NJ" />New Jersey  
+                        <option value="NM" />New Mexico  
+                        <option value="NY" />New York  
+                        <option value="NC" />North Carolina  
+                        <option value="ND" />North Dakota  
+                        <option value="OH" />Ohio  
+                        <option value="OK" />Oklahoma  
+                        <option value="OR" />Oregon  
+                        <option value="PA" />Pennsylvania  
+                        <option value="RI" />Rhode Island  
+                        <option value="SC" />South Carolina  
+                        <option value="SD" />South Dakota  
+                        <option value="TN" />Tennessee  
+                        <option value="TX" />Texas  
+                        <option value="UT" />Utah  
+                        <option value="VT" />Vermont  
+                        <option value="VA" />Virginia  
+                        <option value="WA" />Washington  
+                        <option value="WV" />West Virginia  
+                        <option value="WI" />Wisconsin  
+                        <option value="WY" />Wyoming 
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="postal">
+                    <span class="sel-text">Zip.Postal Code: </span>
+                    <input type="text" />
+                  </div>
+                  <div class="center">
+                    <input type="button" value="get qoutes" class="btn btn-primary" />
+                  </div>
+
+                </form>
+              </div> -->
+
+<!--               <div class="shopping-cart-sidebar-container">
+                <h2>discount codes </h2>
+                <p>Enter your coupon code __ you have one. </p>
+                <form action="#" method="post" class="sc-sidebar-form">
+                  <input type="text" />
+                  <div class="center"> 
+                    <input type="button" value="apply coupon" class="btn btn-primary" />
+                  </div>
+
+                </form>
+              </div> -->
+
+              <div class="shopping-cart-sidebar-container">
+                <!-- total price section -->
+                <div class="total-price">
+                  <div class="st">
+                    <span class="pull-left">Sub Total: </span><span class="pull-right">$000.00 </span>
+                  </div>
+                  <div class="st">
+                    <span class="pull-left">Tax: </span><span class="pull-right">000% </span>
+                  </div>
+                  <div class="st">
+                    <span class="pull-left">Shipping: </span><span class="pull-right">Free </span>
+                  </div>
+                  <div class="gt">
+                    <span class="pull-left">Grand Total: </span><span class="pull-right"><%= number_to_currency order.total %></span>
+                  </div>
+                  <!-- <a href="#" class="btn btn-primary btn-theme-color">Proceed to checkout </ a> -->
+                  <%= link_to "Proceed to checkout ", checkout_path, :class=>"btn btn-primary btn-theme-color" %>
+                  <%= link_to 'Continue shopping', products_path, class: :"btn btn-link"%>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- shopping cart section ends -->
+    </div>
+
+  </div>
+</div>
+<!-- <div class="home-feature">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="feature feature-one">
+          <i class="fa fa-location-arrow"></i>
+          <h1>Free Shipping </h1>
+          <p>Free Shipping on Orders ____ $100 </p>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="feature feature-two">
+          <i class="fa fa-gift"></i>
+          <h1>Buy 1 Get 1 </h1>
+          <p>Apply For Longtime Customers </p>
+        </div>
+      </div>
+      <div class="col-md-3">  
+        <div class="feature feature-three">
+          <i class="fa fa-money"></i>
+          <h1>Money Back ! </h1>
+          <p>Money Back Guarantee 30 ____ </p>
+        </div>
+      </div>
+      <div class="col-md-3">  
+        <div class="feature feature-four">
+          <i class="fa fa-trophy"></i>
+          <h1>Quality Product </h1>
+          <p>Quality Commitment all Products </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<%#= render 'items', :order => current_order %>

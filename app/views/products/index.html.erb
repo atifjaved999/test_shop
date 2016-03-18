@@ -20,47 +20,21 @@
             <div class="col-sm-3">
               <div class="product-display-option">
                 <div class="select-wrap-ff">
-                  <select class="select select-ff">
-                    <option />Categories 
-                    <option />Computers 
-                    <option />Fashion 
-                    <option />-Women's Apparel 
-                    <option />-Dresses 
-                    <option />-T-Shirts 
-                    <option />Electronics 
-                    <option />Apparels 
-                    <option />Cosmetics 
-                    <option />Furniture 
-                    <option />Toys & Hobbies 
-                  </select>
+                  <%= select_tag "product_category_id", options_for_select(Shoppe::ProductCategory.ordered.collect{ |c| [c.name, c.id]}),{:prompt=>"Category", :class =>"select select-ff"} %>
                 </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="product-display-option">
                 <div class="select-wrap-ff">
-                  <select class="select select-ff">
-                    <option />Color 
-                    <option />Red 
-                    <option />Purple 
-                    <option />Green 
-                    <option />Blue 
-                    <option />White 
-                    <option />Black 
-                  </select>
+                  <%= select_tag 'colors', options_for_select(@colors ? @colors : ""),{:prompt=>"Color", :class=>"select select-dd"}%>
                 </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="product-display-option">
                 <div class="select-wrap-ff">
-                  <select class="select select-ff">
-                    <option />Size 
-                    <option />Extra-Large 
-                    <option />Large 
-                    <option />Medium 
-                    <option />Small 
-                  </select>
+                  <%= select_tag 'sizes', options_for_select(@sizes ? @sizes : "" ),{:prompt=>"Size", :class=>"select select-dd"}%>
                 </div>
               </div>
             </div>
@@ -206,3 +180,19 @@
   </div>
   <!-- main body block ends -->
 </div>
+
+<script type="text/javascript">
+  $("#colors").change(function(){
+    var color = $(this).val();
+    $.ajax({
+          url: '<%=products_path%>',
+          data: {"search_color": color},
+          method: 'get',
+          format: 'js',
+          success: function(data) {
+            
+          }
+        });
+  });
+
+</script>

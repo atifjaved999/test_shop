@@ -3,6 +3,15 @@ class ProductsController < ApplicationController
   def index
     @products = Shoppe::Product.root.ordered.includes(:product_categories, :variants)
     # @products = @products.group_by(&:product_category)
+    @colors = Shoppe::Product.all_colors
+    @sizes = Shoppe::Product.all_sizes
+
+    if request.xhr?
+      @products = Shoppe::Product.search_by_color(params[:search_color]) if params[:search_color]
+      respond_to do |format|
+        format.js {}
+      end
+    end
   end
 
   def show

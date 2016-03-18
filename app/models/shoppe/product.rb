@@ -203,11 +203,11 @@ module Shoppe
     end
 
     def get_color
-      self.name.split("-")[0]
+      self.name.split("-")[0] || ""
     end
 
     def get_size
-      self.name.split("-")[1]
+      self.name.split("-")[1] || ""
     end
 
     def collect_colors(variant_names)
@@ -246,6 +246,32 @@ module Shoppe
     def self.find_exact_product(color, size)
       name1 = [color, "-", size].join
       joins(:translations).where("shoppe_product_translations.name like ?", "%#{name1}%").try(:first)
+    end
+
+    def self.all_colors
+      products = where.not(parent_id:nil).joins(:translations) # Colors from Variants
+      colors = []
+      products.each do |product|
+        colors << product.get_color
+      end
+      return colors.uniq
+    end
+
+    def self.all_sizes
+      products = where.not(parent_id:nil).joins(:translations) # Sizes from Variants
+      sizes = []
+      products.each do |product|
+        sizes << product.get_size
+      end
+      return sizes.uniq
+    end
+
+    def self.search_by_color(color)
+      Product.active.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%")
+    end
+
+    def self.search_by_size(size)
+      Product.active.joins(:translations).where("shoppe_product_translations.name like ?", "%#{size}%")
     end
 
 
