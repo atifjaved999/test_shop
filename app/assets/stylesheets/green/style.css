@@ -1773,7 +1773,7 @@ footer .widget-heading{
 	right: 3%;
 	background: #e5e5e5;
 }
-.postal{width: 100%; margin border-bottom: 10px;}
+.postal{width: 100%; border-bottom: 10px;}
 .sc-sidebar-form input[type="text"]{width: 100% !important;}
 .sc-sidebar-form input[type="submit"],
 .sc-sidebar-form input[type="reset"],
@@ -1969,7 +1969,7 @@ footer .widget-heading{
 		padding-left: 6px;
 		padding-right: 6px;
 	}
-	.cart-row {max-height: inherit; !important;}
+	.cart-row {max-height: inherit !important;}
 	.cart-row .product-name{
 		height: inherit;
 		clear: both;
