@@ -88,7 +88,7 @@ Rails.application.configure do
     password: "mytechverx"
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://my-test-shop.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'my-test-shop.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in production mode.
