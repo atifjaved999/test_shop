@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   protect_from_forgery
   def index
-    @products = Shoppe::Product.root.ordered.includes(:product_categories, :variants)
+    @products = Shoppe::Product.root.ordered.includes(:product_categories, :variants).page(params[:page]).per(4)
     # @products = @products.group_by(&:product_category)
     @colors = Shoppe::Product.all_colors
     @sizes = Shoppe::Product.all_sizes

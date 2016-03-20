@@ -30,7 +30,7 @@
        <div class="col-md-12">
          <!-- logo section starts  -->
          <div class="logo-wrapper">
-           <a href="index.php" class="logo">
+           <a href="/" class="logo" data-no-turbolink =true>
              <img src="/assets/green/logo.png" alt="logo" />
            </a>
          </div>
@@ -91,7 +91,7 @@
              <%= link_to "Home Page", root_path, 'data-no-turbolink' => true %>
              </li>
              <li class="shop-submenu-area">
-               <a href="#">Shop </a>
+               <%= link_to "Products", products_path%>
              </li>
              <li class="shop-submenu-area">
                <a href="product-grid.html">View Types </a>
