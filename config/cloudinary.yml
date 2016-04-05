@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: malu
+  api_key: '912772116562453'
+  api_secret: K9GF1JIKKZ3i_28SFyU6hKCNPpQ
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: malu
+  api_key: '912772116562453'
+  api_secret: K9GF1JIKKZ3i_28SFyU6hKCNPpQ
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: malu
+  api_key: '912772116562453'
+  api_secret: K9GF1JIKKZ3i_28SFyU6hKCNPpQ
+  enhance_image_tag: true
+  static_image_support: false

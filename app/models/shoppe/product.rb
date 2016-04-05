@@ -54,8 +54,12 @@ module Shoppe
     # All active products
     scope :active, -> { where(active: true) }
 
+    scope :default, -> { where(default: true) }
+
     # All featured products
     scope :featured, -> { where(featured: true) }
+
+    scope :only_variants, -> { where.not(parent_id: nil) }
 
     # Localisations
     translates :name, :permalink, :description, :short_description
@@ -267,11 +271,11 @@ module Shoppe
     end
 
     def self.search_by_color(color)
-      Product.active.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%")
+      joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%")
     end
 
     def self.search_by_size(size)
-      Product.active.joins(:translations).where("shoppe_product_translations.name like ?", "%#{size}%")
+      joins(:translations).where("shoppe_product_translations.name like ?", "%#{size}%")
     end
 
 
@@ -283,16 +287,46 @@ module Shoppe
       where(default: true).where.not(parent_id:nil)
     end
 
-    # def self.parents
-    #   Shoppe::Product.joins(:variants)
-    # end
+    def self.search_filters(params)
+      if params[:search_category].present?
+        @products = Shoppe::ProductCategory.find(params[:search_category]).products
+      else
+        @products = Shoppe::Product.active
+      end
+        @products = @products.search_by_color(params[:search_color]) if params[:search_color].present?
+        @products = @products.search_by_size(params[:search_size]) if params[:search_size].present?
+        return @products
+    end
 
-    # def self.without_parents
-    #   if parents
-    #     parents_ids = parents.collect(&:id) 
-    #     where.not(id:parents_ids)
-    #   end
-    # end
+    def self.without_parents
+        parents = joins(:variants)
+      if parents.present?
+        parents_ids = parents.collect(&:id) 
+        where.not(id:parents_ids)
+      else
+        active
+      end
+    end
+
+    def get_short_description
+      return  self.parent.short_description if self.variant?
+      return self.short_description
+    end
+
+    def get_description
+      return  self.parent.description if self.variant?
+      return self.description
+    end
+
+    def get_product_attributes
+      return  self.parent.product_attributes if self.variant?
+      return self.product_attributes
+    end
+
+    def get_in_the_box
+      return  self.parent.in_the_box if self.variant?
+      return self.in_the_box
+    end
 
     private
 

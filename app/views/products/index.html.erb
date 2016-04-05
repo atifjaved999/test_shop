@@ -2,7 +2,7 @@
 
   <div class="product-display-full-top block-45">
     <div class="container">
-      <div class="row">
+      <div id="filters" class="row">
       <!-- Breadcrumbs section starts -->
         <div class="col-md-12">
             <div class="breadcrumbs-block breadcrumbs-product">
@@ -64,7 +64,8 @@
   
     </div>
   </div>
-   
+
+
 
   <!-- main body block starts -->
   <div class="container main-body-block category-product-block block-45">
@@ -109,7 +110,7 @@
             </div>
             <div class="col-sm-5">
               <ul class="pagination pagination-top">
-                <%= paginate @products %>
+                <%= paginate @products, :remote => true %>
               </ul>
             </div>
           </div>
@@ -117,54 +118,16 @@
         <!-- product display row -->
         <div class="product-display-grid">
           <!-- row one -->
-          <div class="row">
+          <div id="products" class="row">
             <!-- product item -->
-            <% @products.each do |product| %>
-              <div class="col-sm-6 col-md-3">
-                <div class="product-box">
-                  <div>
-                    <div class="product-item-visual">
-                      <!-- <img src="/assets/green/products/item-10.jpg" alt="product" /> -->
-                      <% if product.default_image %>
-                        <%= image_tag product.default_image.path, :width => '259px', :height => '171px' %>
-                      <% end %>
-                    </div>
-                    <div class="product-badge sale">
-                     ____
-                    </div>
-                   
-                    <div class="product-item-desc">
-                      <h1><%= link_to product.name, product_path(product.permalink) , 'data-no-turbolink' => true%></h1>
-                      <div class="item-price item-price-sale">
-                       <%= number_to_currency product.price %>
-                      </div>  
-                    </div>
-                    <div class="price-item-desc-detail">                            
-                      <a class="add-to-cart" href="single.html">
-                       Add to Cart
-                      </a>
-                      <div class="btn-group">
-                        <a href="#" class="btn btn-link">+ Add to Wishlist </a>
-                        <a href="#" class="btn btn-link">+ Compare </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <%end%>
+            <%= render "products" %>
           </div>
         </div>
         <!-- pagination row -->
         <div class="row pd-paginate">
           <div class="col-md-5 col-md-offset-7">
             <ul class="pagination pagination-bottom">
-              <li><a href="#"><span class="fa fa-chevron-left"></span></a></li>
-              <li><a href="#">1 </a></li>
-              <li class="active"><a href="#">2 </a></li>
-              <li><a href="#">3 </a></li>
-              <li><a href="#">4 </a></li>
-              <li><a href="#">5 </a></li>
-              <li><a href="#"><span class="fa fa-chevron-right"></span></a></li>
+              <%= paginate @products, :remote => true %>
             </ul>
           </div>
         </div>
@@ -173,18 +136,21 @@
     </div>
   </div>
   <!-- main body block ends -->
-</div>
+
+
 
 <script type="text/javascript">
-  $("#colors").change(function(){
-    var color = $(this).val();
+  $('#filters select').change(function(){
+    var category = $('#product_category_id').val();
+    var color = $('#colors').val();
+    var size = $('#sizes').val();
     $.ajax({
           url: '<%=products_path%>',
-          data: {"search_color": color},
-          method: 'get',
+          data: {"search_category": category, "search_color": color, "search_size": size},
+          method: 'POST',
           format: 'js',
           success: function(data) {
-            
+            // $('#products').html(data);
           }
         });
   });

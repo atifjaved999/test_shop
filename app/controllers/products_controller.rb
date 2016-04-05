@@ -1,13 +1,19 @@
 class ProductsController < ApplicationController
   protect_from_forgery
   def index
-    @products = Shoppe::Product.root.ordered.includes(:product_categories, :variants).page(params[:page]).per(4)
+    # byebug
+    if params[:search_category].present? || params[:search_color].present? || params[:search_size].present?
+      @products = Shoppe::Product.search_filters(params)
+    else
+      @products = Shoppe::Product.without_parents.active#.includes(:product_categories, :variants)#.page(params[:page]).per(4)
+    end
     # @products = @products.group_by(&:product_category)
+    @products = @products.page(params[:page]).per(8)
     @colors = Shoppe::Product.all_colors
     @sizes = Shoppe::Product.all_sizes
 
     if request.xhr?
-      @products = Shoppe::Product.search_by_color(params[:search_color]) if params[:search_color]
+      # render :partial=> 'products/products.html.erb'
       respond_to do |format|
         format.js {}
       end

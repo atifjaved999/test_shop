@@ -41,6 +41,9 @@
          <!-- header top shopping cart button -->
            <div class="dropdown ht-cart ht-fl">
              <p>
+              <%= link_to "Item(s):", basket_path %>
+              <span><%= current_order.order_items.size %></span>
+              <br>
               <%= link_to "Shopping Cart:", basket_path %>
               <span><%= number_to_currency current_order.total %></span>
              </p>
@@ -77,6 +80,7 @@
                  </div>
 
                  <div class="mini-cart-checkout">
+                  <%= link_to "Shopping Cart", basket_path, :class=>"btn btn-link" %>
                   <%= link_to "Proceed to checkout ", checkout_path, :class=>"btn btn-checkout" %>
                  </div>
                </div>
@@ -93,7 +97,7 @@
              <li class="shop-submenu-area">
                <%= link_to "Products", products_path%>
              </li>
-             <li class="shop-submenu-area">
+<!--              <li class="shop-submenu-area">
                <a href="product-grid.html">View Types </a>
                <ul class="shop-submenu ssm-rr">
                  <li><a href="product-grid.html">Grid View side bar </a></li>
@@ -101,11 +105,10 @@
                  <li><a href="product-grid-full.html">Grid View full width </a></li>
                  <li><a href="product-list-full.html">List View full width </a></li>
                </ul>
-             </li>
-             <li><a href="single.html">Single Item </a></li>
-             <li><a href="checkout.html">Checkout </a></li>
-             <li><a href="cart.html">Shopping Cart </a></li>
-             <li><a href="contact.html">Contact </a></li>
+             </li> -->
+             <li><%= link_to "Shopping Cart", basket_path %></li>
+             <li><%= link_to "Checkout ", checkout_path %></li>
+             <li><%= link_to "Contact Us", contact_us_path %></li>
            </ul>
          </nav>
          <!-- main navigation menu ends -->
