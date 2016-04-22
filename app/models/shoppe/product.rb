@@ -233,18 +233,20 @@ module Shoppe
     end
 
     def color_variants(color)
-      self.parent.variants.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%")
+      return self.parent.variants.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%") if self.variant?
+      return self.variants.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%") if self.has_variants?
     end
 
     def available_colors
-      collect_colors(self.parent.variants) if self.parent.variants
+      return collect_colors(self.parent.variants) if self.variant?
+      return collect_colors(self.variants) if self.has_variants?
     end
 
-    def available_sizes
-      color = self.get_color
-      size_variants = self.parent.variants.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%") if color
-      collect_sizes(size_variants) if size_variants
-    end
+    # def available_sizes
+    #   color = self.get_color
+    #   size_variants = self.parent.variants.joins(:translations).where("shoppe_product_translations.name like ?", "%#{color}%") if color
+    #   collect_sizes(size_variants) if size_variants
+    # end
 
 
     def self.find_exact_product(color, size)

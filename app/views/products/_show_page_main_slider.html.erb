@@ -15,6 +15,10 @@
         
         <div id="display-carousel" class="flexslider display-carousel">
           <ul class="slides">      
+          <%unless ["default_image", "data_sheet"].include?(attachment.role)%>
+          <%@product%>
+          <% end %>
+          <% end %>
 <!-- 
             for ($x = 1; $x <= $image_count; $x++) {
                 echo "<li><image src='images/products/".$product_name."/".$x.".jpg' 

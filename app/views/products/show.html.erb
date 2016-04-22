@@ -41,7 +41,7 @@
                       <div class="item-short item-color">
                          <h1>Size </h1>
                          <div class="select-wrap">
-                            <%= select_tag 'sizes', options_for_select(@sizes ? @sizes : ""),{:prompt=>"Please select", :class=>"select select-dd"}%>
+                            <%= select_tag 'size', options_for_select([6,7,8,9,10,11,12,13,14,15 ]),{:prompt=>"Please select", :class=>"select select-dd", :required=>true}%>
                          </div>
                       </div>
                       <div class="item-short item-color">

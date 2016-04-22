@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
     if params[:search_category].present? || params[:search_color].present? || params[:search_size].present?
       @products = Shoppe::Product.search_filters(params)
     else
-      @products = Shoppe::Product.without_parents.active#.includes(:product_categories, :variants)#.page(params[:page]).per(4)
+      @products = Shoppe::Product.root.active
+      # @products = Shoppe::Product.without_parents.active#.includes(:product_categories, :variants)#.page(params[:page]).per(4)
     end
     # @products = @products.group_by(&:product_category)
     @products = @products.page(params[:page]).per(8)
@@ -23,20 +24,20 @@ class ProductsController < ApplicationController
   def show
     @product = Shoppe::Product.active.find_by_permalink(params[:permalink])
 
-      if @product.has_variants?
-        # Main
-        @product = @product.default_variant # get default variant here
-      end
+      # if @product.has_variants?
+      #   # Main
+      #   @product = @product.default_variant # get default variant here
+      # end
 
-      if @product.variant?
+      # if @product.variant?
         # Variant
           if params[:color]
             @color_variants = @product.color_variants(params[:color])
             @product = @color_variants.first if @color_variants
           end
+      # end
         @colors = @product.available_colors
-        @sizes = @product.available_sizes
-      end
+        # @sizes = @product.available_sizes
 
     # byebug
     if request.xhr?
@@ -59,7 +60,7 @@ class ProductsController < ApplicationController
 
     quantity = params[:quantity] ? params[:quantity].to_i : 1
     # byebug
-    current_order.order_items.add_item(@product, quantity)
+    current_order.order_items.add_item(@product, quantity, params[:size])
     # redirect_to product_path(@product.permalink), :notice => "Product has been added successfuly!"
   end
 
