@@ -1,0 +1,60 @@
+<div class="row">  
+  <div class="col-md-12">
+    <div class="product-display featured-product">      
+      <!-- related product display tab -->
+      <h1 class="related-product">
+        Latest Products 
+      </h1> 
+      <%# include 'latest_products_values.php'; %>    
+      <!-- product display carousel -->      
+      <div class="product-carousel">        
+        <div class="list_carousel responsive">          
+          <ul id="carousel-featured-1" class="carousel-product">            
+            <!-- product item --> 
+            <% @products.each do |product| %>
+              <li>              
+                <div class="product-item-block">                
+                  <div class="product-item-visual">      
+                    <!-- <img src="assets/green/products/<%# echo $product['image_path']; %> /1.jpg" width="259" height="171" alt="product" />                   -->
+                  </div>                
+                  <% if product.default_image %>
+                    <%= image_tag product.default_image.path, :width => '259px', :height => '171px' %>
+                  <% end %>
+                  <div class="product-badge <%# echo $product['badge_type']; %> ">
+                    Sale                         
+                  </div>                
+                  <div class="product-item-desc">                  
+                    <a href="#">
+                      <h1 style = "margin-top:20px;">
+                        <%= link_to product.name, product_path(product.permalink) , 'data-no-turbolink' => true %>
+                      </h1>
+                    </a>                  
+                    <div class="item-price item-price-sale">                    
+                      <span class="prev-price">
+                        <%= number_to_currency 7000 %>
+                      </span>
+                      <%= number_to_currency product.price %>                           
+                    </div>                  
+                  </div>                
+                  <div class="price-item-desc-detail">
+                  <%= link_to 'Show Details', product_path(product.permalink) , 'data-no-turbolink' => true, :class=>"add-to-cart" %>
+                  </div>                
+                </div>                    
+              </li>
+              <%end%>               
+          </ul>
+          <div class="clearfix">
+          </div>
+          <a id="prev4" class="prev" href="#">
+            <span class="fa  fa-angle-left">
+            </span>
+          </a>
+          <a id="next4" class="next" href="#">
+            <span class="fa  fa-angle-right">
+            </span>                 
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

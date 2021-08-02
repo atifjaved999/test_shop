@@ -1,14 +1,158 @@
-<h2>Products</h2>
+<div class="main-body-wrapper">
 
-<% @products.each do |category, products| %>
-  <h3><%= category.name %></h3>
-  <ul>
-    <% products.each do |product| %>
-    <li>
-      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
-      <p><%= product.short_description %></p>
-      <p><b>Price:</b> <%= number_to_currency product.price %></p>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
+  <div class="product-display-full-top block-45">
+    <div class="container">
+      <div id="filters" class="row">
+      <!-- Breadcrumbs section starts -->
+        <div class="col-md-12">
+            <div class="breadcrumbs-block breadcrumbs-product">
+               <!-- breadcrumbs starts -->
+              <ol class="breadcrumb">
+                <li><a href="#">Home </a></li>
+                <li><a href="#">Product </a></li>
+                <li class="active">Product Grid Full Width </li>
+              </ol>
+          </div>
+        </div>
+      <!-- breadcrumbs ends -->
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="product-display-option">
+                <div class="select-wrap-ff">
+                  <%= select_tag "product_category_id", options_for_select(Shoppe::ProductCategory.ordered.collect{ |c| [c.name, c.id]}),{:prompt=>"Category", :class =>"select select-ff"} %>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="product-display-option">
+                <div class="select-wrap-ff">
+                  <%= select_tag 'colors', options_for_select(@colors ? @colors : ""),{:prompt=>"Color", :class=>"select select-dd"}%>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="product-display-option">
+                <div class="select-wrap-ff">
+                  <%= select_tag 'sizes', options_for_select(@sizes ? @sizes : "" ),{:prompt=>"Size", :class=>"select select-dd"}%>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="product-display-option">
+                <div class="select-wrap-ff">
+                  <select class="select select-ff">
+                    <option />Brands 
+                    <option />Guicci 
+                    <option />Crocodile 
+                    <option />Nike 
+                    <option />Addidas 
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-offset-4 col-sm-4 range-slider-ff">
+              <div id="slider-range"></div>
+              <p>
+                <input type="text" id="amount" class="range-slider-value" />
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+
+
+  <!-- main body block starts -->
+  <div class="container main-body-block category-product-block block-45">
+    <div class="row">
+      <!-- Category product view starts -->
+      <div class="col-md-12 category-product-display">
+        <!-- pagination and shorting row -->
+        <div class="row">
+          <div class="col-sm-12 pd-paginate">
+            <div class="col-sm-3">
+              <a href="product-grid.html" class="btn-grid-list active"><span class="fa fa-th"></span></a>
+              <a href="product-list.html" class="btn-grid-list"><span class="fa fa-list"></span></a>
+            </div>
+            <div class="col-sm-4">
+              <div class="product-display-no">
+                <span class="sel-text">Short By: </span>
+                <div class="select-wrap xl">
+                  <select class="select select-pn">
+                    <option />Default 
+                    <option />Lorem 
+                    <option />Ipsum 
+                    <option />Dolor 
+                  </select>
+                </div>
+              </div>
+              <div class="product-display-no">
+                <span class="sel-text">Show: </span>
+                <div class="select-wrap">
+                  <select class="select select-pn">
+                    <option />9 
+                    <option />8 
+                    <option />7 
+                    <option />6 
+                    <option />5 
+                    <option />4 
+                    <option />3 
+                    <option />2 
+                    <option />1 
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <ul class="pagination pagination-top">
+                <%= paginate @products, :remote => true %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- product display row -->
+        <div class="product-display-grid">
+          <!-- row one -->
+          <div id="products" class="row">
+            <!-- product item -->
+            <%= render "products" %>
+          </div>
+        </div>
+        <!-- pagination row -->
+        <div class="row pd-paginate">
+          <div class="col-md-5 col-md-offset-7">
+            <ul class="pagination pagination-bottom">
+              <%= paginate @products, :remote => true %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Category product view ends -->
+    </div>
+  </div>
+  <!-- main body block ends -->
+
+
+
+<script type="text/javascript">
+  $('#filters select').change(function(){
+    var category = $('#product_category_id').val();
+    var color = $('#colors').val();
+    var size = $('#sizes').val();
+    $.ajax({
+          url: '<%=products_path%>',
+          data: {"search_category": category, "search_color": color, "search_size": size},
+          method: 'POST',
+          format: 'js',
+          success: function(data) {
+            // $('#products').html(data);
+          }
+        });
+  });
+
+</script>

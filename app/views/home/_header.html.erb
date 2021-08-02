@@ -1,0 +1,121 @@
+<header>
+ <!-- header top section starts -->
+ <div class="header-top">
+   <div class="container">
+     <div class="row">
+       <!-- top bar menu -->
+       <div class="col-sm-8">
+         <ul class="top-bar-menu">
+            <li>Welcome to <strong>MALU</strong> the leading brand of Crystals!</li>
+         </ul>
+       </div>
+       <!-- language and currency selection section --> 
+       <div class="col-sm-4">
+         <div class="top-bar-left">
+            <ul class="top-bar-menu">
+               <li>Call at <strong>0321-454545345</strong> to place your order!</li>
+            </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- header top section ends -->
+
+ <!-- header main section starts -->
+ <div class="header-main">
+   <div class="container">
+     <div class="row">
+
+       <div class="col-md-12">
+         <!-- logo section starts  -->
+         <div class="logo-wrapper">
+           <a href="/" class="logo" data-no-turbolink =true>
+             <img src="/assets/green/logo.png" alt="logo" />
+           </a>
+         </div>
+         <!-- logo section ends  -->
+       </div>
+
+       <div class="col-md-12">
+         <!-- header top shopping cart button -->
+           <div class="dropdown ht-cart ht-fl">
+             <p>
+              <%= link_to "Item(s):", basket_path %>
+              <span><%= current_order.order_items.size %></span>
+              <br>
+              <%= link_to "Shopping Cart:", basket_path %>
+              <span><%= number_to_currency current_order.total %></span>
+             </p>
+
+             <a data-toggle="dropdown" href="#" class="button-cart">Cart </a>
+               <div class="dropdown-menu content" role="menu">
+
+                 <div class="mini-cart-info">
+                   <table>
+                     <tbody>
+                       <tr>
+                         <td class="cart-head">Recently added items </td>
+                       </tr>
+                       <% current_order.order_items.each do |item| %>
+                         <tr>
+                           <td class="image">
+                             <a href="#">
+                              <image src='<%= item.ordered_item.default_image.path%>' width='117' height='85' alt='Not Found' />
+                             </a>
+                           </td>
+                           <td class="name">
+                             <a href="#">
+                               <span class="mc-heading"><%= item.ordered_item.full_name %> </span>
+                             </a>                              
+                             <span class="mc-price"><%= item.quantity %> x <%= number_to_currency item.unit_price %> </span>
+                           </td>
+                           <td class="remove">
+                             <a href="#"><span class="fa fa-times"></span></a>
+                           </td>
+                         </tr>
+                       <% end %>
+                     </tbody>
+                   </table>
+                 </div>
+
+                 <div class="mini-cart-checkout">
+                  <%= link_to "Shopping Cart", basket_path, :class=>"btn btn-link" %>
+                  <%= link_to "Proceed to checkout ", checkout_path, :class=>"btn btn-checkout" %>
+                 </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="col-md-12">
+         <!-- main navigation menu starts -->
+         <nav class="clearfix">
+           <ul id="nav" class="main-nav">
+             <li class="shop-submenu-area selected">
+             <%= link_to "Home Page", root_path, 'data-no-turbolink' => true %>
+             </li>
+             <li class="shop-submenu-area">
+               <%= link_to "Products", products_path%>
+             </li>
+<!--              <li class="shop-submenu-area">
+               <a href="product-grid.html">View Types </a>
+               <ul class="shop-submenu ssm-rr">
+                 <li><a href="product-grid.html">Grid View side bar </a></li>
+                 <li><a href="product-list.html">List View side bar </a></li>
+                 <li><a href="product-grid-full.html">Grid View full width </a></li>
+                 <li><a href="product-list-full.html">List View full width </a></li>
+               </ul>
+             </li> -->
+             <li><%= link_to "Shopping Cart", basket_path %></li>
+             <li><%= link_to "Checkout ", checkout_path %></li>
+             <li><%= link_to "Contact Us", contact_us_path %></li>
+           </ul>
+         </nav>
+         <!-- main navigation menu ends -->
+       </div>
+
+     </div>
+   </div>
+ </div>
+ <!-- header main section ends -->
+</header>

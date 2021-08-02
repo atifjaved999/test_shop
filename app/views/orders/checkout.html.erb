@@ -1,33 +1,147 @@
-<h2>Checkout</h2>
-<% if @order.errors.any? %>
-<ul>
-  <% @order.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
-<%= render 'items', :order => @order %>
+<div class="main-body-wrapper">
+  <div class="container block-45">
+    <div class="row">
+      <div class="col-md-12">
+          <!-- Breadcrumbs section starts -->
+          <div class="breadcrumbs-block breadcrumbs-product">
+             <!-- breadcrumbs starts -->
+            <ol class="breadcrumb">
+              <li><a href="#">Home </a></li>
+              <li class="active">Checkout Infomation </li>
+            </ol>
+            <!-- breadcrumbs ends -->
+        </div>
+        <!-- Breadcrumbs section ends -->
+      </div>
+      <div class="col-md-12">
+        <!-- page title -->
+        <div class="page-title">
+          <h1 class="page-title-head">Checkout Infomation </h1>
+        </div>
+      </div>
+      <!-- checkout main section starts -->
+      <div class="col-md-12 checkout-list">
+        <ol class="checklist">
+          <li class="current">
+            <h2>01.Checkout Infomation </h2>
+            <div class="row">
+              <div class="col-md-12 content-wrapper clearfix">
+                <div class="row">
+                <%= form_for @order, :url => checkout_path do |f| %>
+                  <div class="right-col col-md-6">
+                      <div class="form-group row">
+                        <label for="order_first_name" class="col-sm-2 form-control-label">First&nbsp;Name</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :first_name, :class=>"form-control" %>
+                        </div>
+                      </div>
 
-<%= form_for @order, :url => checkout_path do |f| %>
-  <dl>
-    <dt><%= f.label :first_name, 'Name' %></dt>
-    <dd><%= f.text_field :first_name %> <%= f.text_field :last_name %></dd>
+                      <div class="form-group row">
+                        <label for="order_last_name" class="col-sm-2 form-control-label">Last&nbsp;Name</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :last_name, :class=>"form-control" %>
+                        </div>
+                      </div>
 
-    <dt><%= f.label :billing_address1, 'Address' %></dt>
-    <dd><%= f.text_field :billing_address1 %></dd>
-    <dd><%= f.text_field :billing_address2 %></dd>
-    <dd><%= f.text_field :billing_address3 %></dd>
-    <dd><%= f.text_field :billing_address4 %></dd>
-    <dt><%= f.label :billing_postcode, 'Post code' %></dt>
-    <dd><%= f.text_field :billing_postcode %></dd>
-    <dd><%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %></dd>
+                      <div class="form-group row">
+                        <label for="order_billing_address1" class="col-sm-2 form-control-label">Address&nbsp;1</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :billing_address1, :class=>"form-control" %>
+                        </div>
+                      </div>
 
-    <dt><%= f.label :email_address %></dt>
-    <dd><%= f.text_field :email_address %></dd>
+                      <div class="form-group row">
+                        <label for="order_billing_address2" class="col-sm-2 form-control-label">Address&nbsp;2</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :billing_address2, :class=>"form-control" %>
+                        </div>
+                      </div>
 
-    <dt><%= f.label :phone_number %></dt>
-    <dd><%= f.text_field :phone_number %></dd>
+                      <div class="form-group row">
+                        <label for="order_billing_address3" class="col-sm-2 form-control-label">Address&nbsp;3</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :billing_address3, :class=>"form-control" %>
+                        </div>
+                      </div>
+                  </div>
 
-    <dd><%= f.submit 'Continue' %></dd>
-  </dl>
-<% end %>
+                  <div class="right-col col-md-6">
+                    <% if @order.errors.any? %>
+                    <ul>
+                      <% @order.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                    <% end %>
+                      <div class="form-group row">
+                        <label for="order_email_address" class="col-sm-2 form-control-label">Email&nbsp;Address</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :email_address, :class=>"form-control" %>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="order_phone_number" class="col-sm-2 form-control-label">Phone&nbsp;No.</label>
+                        <div class="col-sm-10">
+                          <%= f.text_field :phone_number, :class=>"form-control" %>
+                        </div>
+                      </div>
+                      <br />
+                      <div class="form-group row">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <%= f.submit 'Continue', :class=>"btn btn-primary btn-theme-color" %>
+                        </div>
+                      </div>
+                  </div>
+                <% end %>
+                </div>  
+              </div>                      
+            </div>
+          </li>
+          <li>
+            <h2>02.Billing Infomation </h2>
+            <div class="row">
+              <div class="col-md-12 content-wrapper">
+               Content
+              </div>
+            </div>
+          </li>
+          <li>
+            <h2>03.Delivery Details </h2>
+            <div class="row">
+              <div class="col-md-12 content-wrapper">
+               Content
+              </div>
+            </div>
+          </li>
+          <li>
+            <h2>04.Payment Method </h2>
+            <div class="row">
+              <div class="col-md-9 content-wrapper">
+               Content
+              </div>
+            </div>
+          </li>
+          <li>
+            <h2>05.Confirm Order </h2>
+            <div class="row">
+              <div class="col-md-12 content-wrapper">
+               Content
+              </div>
+            </div>
+          </li>
+          <li class="last">
+            <h2>06.Account & Billing Details </h2>
+            <div class="row">
+              <div class="col-md-12 content-wrapper">
+               Content
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <!-- checkout main section ends -->
+    </div>
+
+  </div>
+</div>

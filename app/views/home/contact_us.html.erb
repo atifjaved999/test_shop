@@ -1,0 +1,168 @@
+<!-- main body section starts -->
+<div class="main-body-wrapper contact">
+  <div class="container block-45">
+    <div class="row">
+      <div class="col-md-12">
+          <!-- Breadcrumbs section starts -->
+          <div class="breadcrumbs-block breadcrumbs-product">
+             <!-- breadcrumbs starts -->
+            <ol class="breadcrumb">
+              <li><a href="#">Home </a></li>
+              <li class="active">Contact Us </li>
+            </ol>
+            <!-- breadcrumbs ends -->
+        </div>
+        <!-- Breadcrumbs section ends -->
+      </div>
+      <div class="col-md-12">
+        <!-- page title -->
+        <div class="page-title">
+          <h1 class="page-title-head">Contact Us </h1>
+          <p class="page-subtitle">Keep in touch with us and send us a _______ </p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <!-- google map section starts -->
+        <div class="google-map">
+          <!-- gMap starts -->
+          <div id="map">
+          </div>
+          <!-- gMap ends -->
+        </div>
+        <!-- google map section ends -->
+      </div>
+
+      <!-- page description starts -->
+      <div class="col-md-12">
+        <div class="contact-us-page-desc block-45">
+          <h3>Want to tell us ____ you think ? </h3>
+          <p>Lorem ipsum nam rhoncus _____ vitae sit leo vestibulum ___________ fermentum, volutpat nisl nullam _______ quam condimentum eu ornare __ fermentum facilisis nostra aliquam ____ turpis tempus purus, ligula ___ praesent suscipit non augue ________ curae, commodo tincidunt morbi ____ volutpat fermentum. </p>
+        </div>
+      </div>
+      <!-- page description ends -->
+
+      <!-- contact form starts -->
+      <div class="col-md-12">
+        <div class="row">
+          <!-- contact info sections sidebar -->
+          <div class="col-sm-4">
+            <div class="contact-info-sidebar">
+              <h3>Contact info </h3>
+              <ul>
+                <li>69 South Park Avenue ___ Francisco, CA 14782 USA </li>
+                <li><br /></li>
+                <li>Phone: (00) 123 456 789 </li>
+                <li>Fax: (00) 987 654 321 </li>
+                <li>Email: support@companyname.com </li>
+                <li>Web: www,companyname.com </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- contact form -->
+          <div class="col-sm-8">
+            <div class="contact-form-block">
+              <h3>Contact Form </h3>
+              <%= form_for :user , :url=> "/contact", :html => {:id => "contact_form", :class=>"contact-form"} do |f|%>
+                <ul>
+                  <li> 
+                    <label for="name">Name </label>
+                    <input type="text" placeholder="" id="name" name="name" />
+                  </li>
+                  <li>
+                    <label for="email">Email </label>
+                    <input type="email" placeholder="" id="email" name="email" />
+                  </li>
+                  <li>
+                    <label for="subject">Subject </label>
+                    <input type="text" placeholder="" id="subject" name="subject" />
+                  </li>
+                  <li>
+                    <label for="message">Message </label>
+                    <textarea class="" placeholder="" id="message" name="message"></textarea>
+                  </li>
+                  <li>
+                    <input class="btn btn-primary" type="submit" value="Send" /> 
+                  </li>
+                </ul>  
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- contact form ends -->
+    </div>
+
+  </div>
+</div>
+<div class="home-feature">
+  <div class="container">
+    <!-- features section starts -->
+    <div class="row">
+      <div class="col-md-3">
+        <!-- feature single section -->
+        <div class="feature feature-one">
+          <i class="fa fa-location-arrow"></i>
+          <h1>Free Shipping </h1>
+          <p>Free Shipping on Orders ____ $100 </p>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <!-- feature single section -->
+        <div class="feature feature-two">
+          <i class="fa fa-gift"></i>
+          <h1>Buy 1 Get 1 </h1>
+          <p>Apply For Longtime Customers </p>
+        </div>
+      </div>
+      <div class="col-md-3">  
+        <!-- feature single section -->
+        <div class="feature feature-three">
+          <i class="fa fa-money"></i>
+          <h1>Money Back ! </h1>
+          <p>Money Back Guarantee 30 ____ </p>
+        </div>
+      </div>
+      <div class="col-md-3">  
+        <!-- feature single section -->
+        <div class="feature feature-four">
+          <i class="fa fa-trophy"></i>
+          <h1>Quality Product </h1>
+          <p>Quality Commitment all Products </p>
+        </div>
+      </div>
+    </div>
+    <!-- features section ends -->
+  </div>
+</div>
+<!-- main body block ends -->
+
+<!-- main body section ends -->
+
+
+
+<script>
+  $(document).ready(function(){
+     myStore = new google.maps.LatLng("31.513981","74.28542");
+    function initialize()
+    {
+      var mapProp = {
+        center:myStore,
+        zoom: 15,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+       map_1 = new google.maps.Map(document.getElementById("map"),mapProp);
+
+      var marker = new google.maps.Marker({
+        position:myStore,
+        title: "Malu",
+        });
+
+      marker.setMap(map_1);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+  });
+</script>

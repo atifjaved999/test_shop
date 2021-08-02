@@ -1,0 +1,36 @@
+<div class="col-md-5">
+  <div class="pds-holder">
+    <div class="panel">
+      <!-- slider -->
+      <div class="product-display-detail-slider">
+        <div id="display-slider" class="flexslider display-slider">
+          <ul class="slides">
+                <li>
+                <image src='<%= @product.default_image.path%>' 
+                width='428' height='283' alt='Not Found' />
+                </li>
+          </ul>
+          
+        </div>
+        
+        <div id="display-carousel" class="flexslider display-carousel">
+          <ul class="slides">      
+          <%unless ["default_image", "data_sheet"].include?(attachment.role)%>
+          <%@product%>
+          <% end %>
+          <% end %>
+<!-- 
+            for ($x = 1; $x <= $image_count; $x++) {
+                echo "<li><image src='images/products/".$product_name."/".$x.".jpg' 
+                width='100' height='66' alt='' /></li>";}  -->
+          </ul>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="product-badge sale">
+      Sale
+    </div>
+  </div>
+</div>

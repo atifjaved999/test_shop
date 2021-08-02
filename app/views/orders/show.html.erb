@@ -1,4 +1,104 @@
-<h2>Your basket</h2>
-<%= render 'items', :order => current_order %>
+<!-- <h2>Your basket</h2> -->
+<%order = current_order%>
 
-<p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
+<!-- main body section starts -->
+<div class="main-body-wrapper">
+  <div class="container block-45">
+    <div class="row">
+      <div class="col-md-12">
+          <!-- Breadcrumbs section starts -->
+          <div class="breadcrumbs-block breadcrumbs-product">
+             <!-- breadcrumbs starts -->
+            <ol class="breadcrumb">
+              <li><a href="#">Home </a></li>
+              <li class="active">Shopping Cart </li>
+            </ol>
+            <!-- breadcrumbs ends -->
+        </div>
+        <!-- Breadcrumbs section ends -->
+      </div>
+      <div class="col-md-12">
+        <!-- page title -->
+        <div class="page-title">
+          <h1 class="page-title-head">Shopping Cart </h1>
+        </div>
+      </div>
+      <!-- shopping cart section starts -->
+      <div class="col-md-12 shopping-cart-block">
+        <div class="row">
+          <!-- shopping cart container  -->
+          <div class="col-md-9">
+            <%= render "shopping_cart", order: order %>
+          </div>
+          <!-- shopping cart sidebar container  -->
+          <div class="col-md-3">
+            <div class="shopping-cart-sidebar">
+
+              <div class="shopping-cart-sidebar-container">
+                <!-- total price section -->
+                <div class="total-price">
+                  <div class="st">
+                    <span class="pull-left">Sub Total: </span><span class="pull-right">$000.00 </span>
+                  </div>
+                  <div class="st">
+                    <span class="pull-left">Tax: </span><span class="pull-right">000% </span>
+                  </div>
+                  <div class="st">
+                    <span class="pull-left">Shipping: </span><span class="pull-right">Free </span>
+                  </div>
+                  <div class="gt">
+                    <span class="pull-left">Grand Total: </span><span class="pull-right"><%= number_to_currency order.total %></span>
+                  </div>
+                  <!-- <a href="#" class="btn btn-primary btn-theme-color">Proceed to checkout </ a> -->
+                  <%= link_to "Proceed to checkout ", checkout_path, :class=>"btn btn-primary btn-theme-color" %>
+                  <%= link_to 'Continue shopping', products_path, class: :"btn btn-link"%>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- shopping cart section ends -->
+    </div>
+
+  </div>
+</div>
+
+<div class="home-feature">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="feature feature-one">
+          <i class="fa fa-location-arrow"></i>
+          <h1>Free Shipping </h1>
+          <p>Free Shipping on Orders ____ $100 </p>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="feature feature-two">
+          <i class="fa fa-gift"></i>
+          <h1>Buy 1 Get 1 </h1>
+          <p>Apply For Longtime Customers </p>
+        </div>
+      </div>
+      <div class="col-md-3">  
+        <div class="feature feature-three">
+          <i class="fa fa-money"></i>
+          <h1>Money Back ! </h1>
+          <p>Money Back Guarantee 30 ____ </p>
+        </div>
+      </div>
+      <div class="col-md-3">  
+        <div class="feature feature-four">
+          <i class="fa fa-trophy"></i>
+          <h1>Quality Product </h1>
+          <p>Quality Commitment all Products </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%#= render 'items', :order => current_order %>

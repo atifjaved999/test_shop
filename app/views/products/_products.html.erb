@@ -1,0 +1,35 @@
+<%if @products.present? %>
+  <% @products.each do |product| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="product-box">
+        <div>
+          <div class="product-item-visual">
+            <!-- <img src="/assets/green/products/item-10.jpg" alt="product" /> -->
+            <% if product.default_image %>
+              <%= image_tag product.default_image.path, :width => '259px', :height => '171px' %>
+            <% end %>
+          </div>
+          <div class="product-badge sale">
+           ____
+          </div>
+         
+          <div class="product-item-desc">
+            <h1><%= link_to product.name, product_path(product.permalink) , 'data-no-turbolink' => true%></h1>
+            <div class="item-price item-price-sale">
+             <%= number_to_currency product.price %>
+            </div>  
+          </div>
+          <div class="price-item-desc-detail">                            
+            <%= link_to 'Add to Cart', product_path(product.permalink) , 'data-no-turbolink' => true, :class=>"add-to-cart" %>
+            <div class="btn-group">
+              <a href="#" class="btn btn-link">+ Add to Wishlist </a>
+              <a href="#" class="btn btn-link">+ Compare </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+<%else%>
+  <h1 class="text-center">No Results Found</h1>
+<%end%>
